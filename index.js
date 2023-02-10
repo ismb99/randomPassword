@@ -97,3 +97,22 @@ const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 
 //
+
+btn.addEventListener("click", function () {
+  let password1 = generatePassword(15, characters);
+  let password2 = generatePassword(15, characters);
+
+  input1.value = password1;
+  input2.value = password2;
+});
+
+function generatePassword(length, characters) {
+  let password = "";
+
+  for (i = 0; i < length; i++) {
+    let randomPassword = Math.floor(Math.random() * characters.length);
+    password += characters[randomPassword];
+  }
+
+  return password;
+}
