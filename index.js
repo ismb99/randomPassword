@@ -95,8 +95,7 @@ const characters = [
 const btn = document.getElementById("btn");
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
-const inputLength = document.getElementById("passwordLength")
-
+const inputLength = document.getElementById("passwordLength");
 
 //
 
@@ -118,4 +117,3 @@ function generatePassword(inputLength, characters) {
 
   return password;
 }
-
