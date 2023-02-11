@@ -50,6 +50,12 @@ button {
   line-height: 24px;
 }
 
+.copy {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
 hr {
   margin-top: 35px;
   border: 1px solid #2f3e53;

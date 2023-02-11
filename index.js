@@ -97,7 +97,11 @@ const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 const inputLength = document.getElementById("passwordLength");
 
-//
+const copyButton1 = document.getElementById("copy-button1");
+const copyButton2 = document.getElementById("copy-button2");
+
+const copyText1 = copyButton1.getAttribute("data-copy-text");
+const copyText2 = copyButton2.getAttribute("data-copy-text");
 
 btn.addEventListener("click", function () {
   let password1 = generatePassword(inputLength, characters);
@@ -107,6 +111,30 @@ btn.addEventListener("click", function () {
   input2.value = password2;
 });
 
+// Copy on click
+copyButton1.addEventListener("click", function () {
+  navigator.clipboard
+    .writeText(input1.value)
+    .then(() => {
+      console.log("Text copied to clipboard");
+    })
+    .catch((err) => {
+      console.error("Failed to copy text: ", err);
+    });
+});
+
+copyButton2.addEventListener("click", function () {
+  navigator.clipboard
+    .writeText(input2.value)
+    .then(() => {
+      console.log("Text copied to clipboard");
+    })
+    .catch((err) => {
+      console.error("Failed to copy text: ", err);
+    });
+});
+
+// Generate password function
 function generatePassword(inputLength, characters) {
   let password = "";
 
