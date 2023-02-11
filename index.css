@@ -32,6 +32,12 @@ p {
   font-size: 20px;
 }
 
+label {
+  font-family: "Inter", sans-serif;
+  color: #d5d4d8;
+  font-size: 20px;
+}
+
 button {
   padding: 9px 17px 9px 15px;
   gap: 12px;
