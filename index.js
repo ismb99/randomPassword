@@ -136,29 +136,34 @@ copyButton2.addEventListener("click", function () {
     });
 });
 
+let onlyLetters = [];
+
+checkBox.addEventListener("change", () => {
+  if (checkBox.checked) {
+    onlyLetters = characters.filter(function (element) {
+      return element.match(/[a-zA-Z]/);
+    });
+    console.log(onlyLetters);
+  } else {
+    return characters;
+  }
+});
+
 // Generate password function
 function generatePassword(passwordLength, characters) {
   let password = "";
 
-  for (i = 0; i < passwordLength.value; i++) {
-    let randomPassword = Math.floor(Math.random() * characters.length);
-    password += characters[randomPassword];
+  if (!checkBox.checked) {
+    for (i = 0; i < passwordLength.value; i++) {
+      let randomPassword = Math.floor(Math.random() * characters.length);
+      password += characters[randomPassword];
+    }
+  } else {
+    for (i = 0; i < passwordLength.value; i++) {
+      let randomPassword = Math.floor(Math.random() * onlyLetters.length);
+      password += onlyLetters[randomPassword];
+    }
   }
 
   return password;
 }
-
-function toggleSymbolsAndNumbers() {
-  checkBox.addEventListener("change", () => {
-    if (checkBox.checked) {
-      const onlyLetters = characters.filter(function (element) {
-        return element.match(/[a-zA-Z]/);
-      });
-      console.log(onlyLetters);
-    } else {
-      return characters;
-    }
-  });
-}
-
-toggleSymbolsAndNumbers();
