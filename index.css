@@ -78,3 +78,21 @@ input[type="checkbox"] {
   height: 20px;
   margin: 15px;
 }
+
+input:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 25px;
+}
+
+.copy-container {
+  position: relative;
+  border: red solid 2px;
+}
+
+.img-input {
+  position: absolute;
+  right: 0;
+}
