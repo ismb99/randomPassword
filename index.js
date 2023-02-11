@@ -95,7 +95,7 @@ const characters = [
 const btn = document.getElementById("btn");
 const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
-const inputLength = document.getElementById("passwordLength");
+const passwordLength = document.getElementById("passwordLength");
 
 const copyButton1 = document.getElementById("copy-button1");
 const copyButton2 = document.getElementById("copy-button2");
@@ -103,9 +103,11 @@ const copyButton2 = document.getElementById("copy-button2");
 const copyText1 = copyButton1.getAttribute("data-copy-text");
 const copyText2 = copyButton2.getAttribute("data-copy-text");
 
+const checkBox = document.getElementById("toggle-checkbox");
+
 btn.addEventListener("click", function () {
-  let password1 = generatePassword(inputLength, characters);
-  let password2 = generatePassword(inputLength, characters);
+  let password1 = generatePassword(passwordLength, characters);
+  let password2 = generatePassword(passwordLength, characters);
 
   input1.value = password1;
   input2.value = password2;
@@ -135,13 +137,28 @@ copyButton2.addEventListener("click", function () {
 });
 
 // Generate password function
-function generatePassword(inputLength, characters) {
+function generatePassword(passwordLength, characters) {
   let password = "";
 
-  for (i = 0; i < inputLength.value; i++) {
+  for (i = 0; i < passwordLength.value; i++) {
     let randomPassword = Math.floor(Math.random() * characters.length);
     password += characters[randomPassword];
   }
 
   return password;
 }
+
+function toggleSymbolsAndNumbers() {
+  checkBox.addEventListener("change", () => {
+    if (checkBox.checked) {
+      const onlyLetters = characters.filter(function (element) {
+        return element.match(/[a-zA-Z]/);
+      });
+      console.log(onlyLetters);
+    } else {
+      return characters;
+    }
+  });
+}
+
+toggleSymbolsAndNumbers();
