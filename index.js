@@ -106,8 +106,8 @@ const copyText2 = copyButton2.getAttribute("data-copy-text");
 const checkBox = document.getElementById("toggle-checkbox");
 
 btn.addEventListener("click", function () {
-  let password1 = generatePassword(passwordLength, characters);
-  let password2 = generatePassword(passwordLength, characters);
+  const password1 = generatePassword(passwordLength, characters);
+  const password2 = generatePassword(passwordLength, characters);
 
   input1.value = password1;
   input2.value = password2;
@@ -144,8 +144,6 @@ checkBox.addEventListener("change", () => {
       return element.match(/[a-zA-Z]/);
     });
     console.log(onlyLetters);
-  } else {
-    return characters;
   }
 });
 
@@ -153,15 +151,16 @@ checkBox.addEventListener("change", () => {
 function generatePassword(passwordLength, characters) {
   let password = "";
 
+  console.log(checkBox.checked);
   if (!checkBox.checked) {
     for (i = 0; i < passwordLength.value; i++) {
-      let randomPassword = Math.floor(Math.random() * characters.length);
-      password += characters[randomPassword];
+      const index = Math.floor(Math.random() * characters.length);
+      password += characters[index];
     }
   } else {
     for (i = 0; i < passwordLength.value; i++) {
-      let randomPassword = Math.floor(Math.random() * onlyLetters.length);
-      password += onlyLetters[randomPassword];
+      const index = Math.floor(Math.random() * onlyLetters.length);
+      password += onlyLetters[index];
     }
   }
 
