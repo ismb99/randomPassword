@@ -97,11 +97,11 @@ const input1 = document.getElementById("input1");
 const input2 = document.getElementById("input2");
 const passwordLength = document.getElementById("passwordLength");
 
-const copyButton1 = document.getElementById("copy-button1");
-const copyButton2 = document.getElementById("copy-button2");
+// const copyButton1 = document.getElementById("copy-button1");
+// const copyButton2 = document.getElementById("copy-button2");
 
-const copyText1 = copyButton1.getAttribute("data-copy-text");
-const copyText2 = copyButton2.getAttribute("data-copy-text");
+const copyText1 = input1.getAttribute("data-copy-text");
+const copyText2 = input2.getAttribute("data-copy-text");
 
 const checkBox = document.getElementById("toggle-checkbox");
 
@@ -114,28 +114,31 @@ btn.addEventListener("click", function () {
 });
 
 // Copy on click
-copyButton1.addEventListener("click", function () {
+input1.addEventListener("click", function () {
   navigator.clipboard
     .writeText(input1.value)
     .then(() => {
       console.log("Text copied to clipboard");
+      alert("Password copied to clipboard");
     })
     .catch((err) => {
       console.error("Failed to copy text: ", err);
     });
 });
 
-copyButton2.addEventListener("click", function () {
+input2.addEventListener("click", function () {
   navigator.clipboard
     .writeText(input2.value)
     .then(() => {
       console.log("Text copied to clipboard");
+      alert("Password copied to clipboard");
     })
     .catch((err) => {
       console.error("Failed to copy text: ", err);
     });
 });
 
+// Save letters from characters array in onlyLetters wit checkbox
 let onlyLetters = [];
 
 checkBox.addEventListener("change", () => {
@@ -143,7 +146,6 @@ checkBox.addEventListener("change", () => {
     onlyLetters = characters.filter(function (element) {
       return element.match(/[a-zA-Z]/);
     });
-    console.log(onlyLetters);
   }
 });
 
@@ -151,7 +153,6 @@ checkBox.addEventListener("change", () => {
 function generatePassword(passwordLength, characters) {
   let password = "";
 
-  console.log(checkBox.checked);
   if (!checkBox.checked) {
     for (i = 0; i < passwordLength.value; i++) {
       const index = Math.floor(Math.random() * characters.length);
@@ -163,6 +164,5 @@ function generatePassword(passwordLength, characters) {
       password += onlyLetters[index];
     }
   }
-
   return password;
 }
